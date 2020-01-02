@@ -34,10 +34,9 @@
     <!-- The visual is mostly a copy of the collision -->
     <visual name="base_visual">
       <geometry>
-        <cylinder>
-          <radius>.04267</radius>
-          <length>.05867</length>
-        </cylinder>
+        <mesh>
+          <uri>model://velodyne_hd32/meshes/velodyne_base.dae </uri>
+        </mesh>
       </geometry>
     </visual>
   </link>
