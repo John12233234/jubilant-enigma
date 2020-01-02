@@ -60,6 +60,12 @@
   <!-- Set the update rate of the sensor -->
   <update_rate>30</update_rate>
   <ray>
+	 <noise>
+      <!-- Use gaussian noise -->
+      <type>gaussian</type>
+      <mean>0.0</mean>
+      <stddev>0.1</stddev>
+    </noise>
 
   <!-- The scan element contains the horizontal and vertical beams.
        We are leaving out the vertical beams for this tutorial. -->
