@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Rover_arm_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0521485723713651 8.23451360332886E-07 0.0436773673832397"
+        rpy="0 0 0" />
+      <mass
+        value="1.69711562233136" />
+      <inertia
+        ixx="0.00139351733769036"
+        ixy="6.6941942134872E-09"
+        ixz="-1.59391845765908E-05"
+        iyy="0.0014273323727382"
+        iyz="1.5494319689683E-09"
+        izz="0.00101888823994211" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Shoulder">
+    <inertial>
+      <origin
+        xyz="0.0316381251404814 0.11213565756876 0.0399858458635299"
+        rpy="0 0 0" />
+      <mass
+        value="4.26331360971573" />
+      <inertia
+        ixx="0.0136818155172076"
+        ixy="-8.45854978560836E-07"
+        ixz="9.92413403425504E-06"
+        iyy="0.0085673597253576"
+        iyz="-0.00438132126558614"
+        izz="0.00621811419610519" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/Shoulder.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/Shoulder.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_rotate"
+    type="revolute">
+    <origin
+      xyz="0.03175 0 0.068224"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Shoulder" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Elbow">
+    <inertial>
+      <origin
+        xyz="-0.0581837210145808 -0.00315074667307305 -0.234191934523549"
+        rpy="0 0 0" />
+      <mass
+        value="1.08277801518828" />
+      <inertia
+        ixx="0.0012357358501092"
+        ixy="-3.27151019601971E-06"
+        ixz="-3.47496508933511E-06"
+        iyy="0.00123974956997205"
+        iyz="-1.94647014184912E-06"
+        izz="0.00018598439928278" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/Elbow.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/Elbow.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_extend"
+    type="revolute">
+    <origin
+      xyz="0.0055273 -0.10316 0.21495"
+      rpy="-1.5708 1.0628 -3.1416" />
+    <parent
+      link="Shoulder" />
+    <child
+      link="Elbow" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Wrist">
+    <inertial>
+      <origin
+        xyz="-0.0538790406699196 1.9176854734626E-05 -0.0627098009322111"
+        rpy="0 0 0" />
+      <mass
+        value="3.06165981211177" />
+      <inertia
+        ixx="0.00109819731716309"
+        ixy="3.18882184258927E-05"
+        ixz="1.18204421641984E-07"
+        iyy="0.00237947709581584"
+        iyz="5.55762384167372E-08"
+        izz="0.00198119550963404" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/Wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Rover_arm_urdf/meshes/Wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Wrist_rotate"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="Elbow" />
+    <child
+      link="Wrist" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
