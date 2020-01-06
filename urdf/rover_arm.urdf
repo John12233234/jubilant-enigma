@@ -1,0 +1,181 @@
+<robot name="rover_arm">
+<link name="base">
+<!-- first link is the base of the arm to be anchored to the world-->
+<!-- physical properties
+
+ Mass properties of Assem3^Rover-Arm-Full-Asm
+     Configuration: Default
+     Coordinate system:  default 
+
+Mass = 2.659 pounds
+
+Volume = 18.080 cubic inches
+
+Surface area = 221.715 square inches
+
+Center of mass: ( inches )
+	X = 1.257
+	Y = 1.006
+	Z = 0.000
+
+Principal axes of inertia and principal moments of inertia: ( pounds * square inches )
+Taken at the center of mass.
+	 Ix = ( 0.727,  0.686,  0.000)   	Px = 4.021
+	 Iy = (-0.686,  0.727,  0.000)   	Py = 19.416
+	 Iz = ( 0.000,  0.000,  1.000)   	Pz = 20.358
+
+Moments of inertia: ( pounds * square inches )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 11.271	Lxy = 7.684	Lxz = 0.000
+	Lyx = 7.684	Lyy = 12.166	Lyz = 0.000
+	Lzx = 0.000	Lzy = 0.000	Lzz = 20.358
+
+Moments of inertia: ( pounds * square inches )
+Taken at the output coordinate system.
+	Ixx = 13.961	Ixy = 11.047	Ixz = 0.000
+	Iyx = 11.047	Iyy = 16.369	Iyz = 0.000
+	Izx = 0.000	Izy = 0.000	Izz = 27.251
+    
+    measurements:
+    width: .13m
+    length: .13m 
+    height: .11m-->
+    <visual>
+        <geometry>
+            
+        </geometry>
+    </visual>
+    <collision>
+        
+    </collision>
+</link>
+
+<link name="Shoulder">
+<!-- Physical properties
+Mass properties of Assem2^Rover-Arm-Full-Asm
+     Configuration: Default
+     Coordinate system:  default
+
+* Includes the mass properties of one or more hidden components/bodies.
+
+Mass = 5.144 pounds
+
+Volume = 59.340 cubic inches
+
+Surface area = 415.451 square inches
+
+Center of mass: ( inches )
+	X = 0.011
+	Y = 7.005
+	Z = -2.772
+
+Principal axes of inertia and principal moments of inertia: ( pounds * square inches )
+Taken at the center of mass.
+	 Ix = ( 0.003, -0.308,  0.951)   	Px = 17.097
+	 Iy = ( 0.014, -0.951, -0.308)   	Py = 67.746
+	 Iz = ( 1.000,  0.014,  0.001)   	Pz = 80.312
+
+Moments of inertia: ( pounds * square inches )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 80.309	Lxy = -0.227	Lxz = 0.130
+	Lyx = -0.227	Lyy = 62.955	Lyz = -14.826
+	Lzx = 0.130	Lzy = -14.826	Lzz = 21.891
+
+Moments of inertia: ( pounds * square inches )
+Taken at the output coordinate system.
+	Ixx = 372.225	Ixy = 0.158	Ixz = -0.022
+	Iyx = 0.158	Iyy = 102.468	Iyz = -114.691
+	Izx = -0.022	Izy = -114.691	Izz = 274.295
+    
+    measurements: .41m in length
+    0.08m diameter -->
+    <visual>
+        <geometry>
+
+        </geometry>
+    </visual>
+    
+</link>
+
+<link name="Elbow">
+    <!-- Physical properties
+    Mass properties of Assem4^Rover-Arm-Full-Asm
+     Configuration: Default
+     Coordinate system:  default
+
+* Includes the mass properties of one or more hidden components/bodies.
+
+Mass = 1.327 pounds
+
+Volume = 12.206 cubic inches
+
+Surface area = 134.303 square inches
+
+Center of mass: ( inches )
+	X = 0.065
+	Y = 7.852
+	Z = -10.377
+
+Principal axes of inertia and principal moments of inertia: ( pounds * square inches )
+Taken at the center of mass.
+	 Ix = ( 0.038,  0.994, -0.103)   	Px = 2.035
+	 Iy = ( 0.215,  0.092,  0.972)   	Py = 6.459
+	 Iz = ( 0.976, -0.059, -0.210)   	Pz = 7.172
+
+Moments of inertia: ( pounds * square inches )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 7.131	Lxy = 0.211	Lxz = 0.129
+	Lyx = 0.211	Lyy = 2.091	Lyz = -0.461
+	Lzx = 0.129	Lzy = -0.461	Lzz = 6.443
+
+Moments of inertia: ( pounds * square inches )
+Taken at the output coordinate system.
+	Ixx = 231.788	Ixy = 0.886	Ixz = -0.763
+	Iyx = 0.886	Iyy = 144.958	Iyz = -108.559
+	Izx = -0.763	Izy = -108.559	Izz = 88.244
+    measurements: .21m in length
+    0.06  diameter-->
+</link>
+
+<link name="Wrist">
+<!-- Physical Properties
+Mass properties of Spherical Wrist 1
+     Configuration: Default
+     Coordinate system:  default 
+
+Mass = 4.692 pounds
+
+Volume = 48.456 cubic inches
+
+Surface area = 491.511 square inches
+
+Center of mass: ( inches )
+	X = 0.000
+	Y = 0.223
+	Z = -10.315
+
+Principal axes of inertia and principal moments of inertia: ( pounds * square inches )
+Taken at the center of mass.
+	 Ix = (-0.002,  1.000, -0.003)   	Px = 10.677
+	 Iy = ( 0.583,  0.004,  0.812)   	Py = 42.840
+	 Iz = ( 0.812,  0.000, -0.583)   	Pz = 48.828
+
+Moments of inertia: ( pounds * square inches )
+Taken at the center of mass and aligned with the output coordinate system.
+	Lxx = 46.792	Lxy = -0.082	Lxz = 2.837
+	Lyx = -0.082	Lyy = 10.678	Lyz = -0.090
+	Lzx = 2.837	Lzy = -0.090	Lzz = 44.876
+
+Moments of inertia: ( pounds * square inches )
+Taken at the output coordinate system.
+	Ixx = 546.280	Ixy = -0.082	Ixz = 2.839
+	Iyx = -0.082	Iyy = 509.931	Iyz = -10.901
+	Izx = 2.839	Izy = -10.901	Izz = 45.110
+measurements:
+0.33m in depth
+0.1m in length
+0.06m in width
+-->    
+</link>
+    
+</robot>
