@@ -1,4 +1,6 @@
 <robot name="rover_arm">
+<!-- geometric models of the links on the arm, these are vast simplifications of what is actually going on in the arm-->
+<!-- planning to use STL meshes atop these to get a more accurate visual representation however collision elements will remain the same-->
 <link name="base">
 <!-- first link is the base of the arm to be anchored to the world-->
 <!-- Mass properties of Assem3^Rover-Arm-Full-Asm
@@ -93,6 +95,7 @@ Taken at the output coordinate system.
     0.08m diameter -->
     <visual>
         <geometry>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/> <!-- make the shoulder stand up out of the base-->
 		
 			<cylinder radius="0.04" length="0.41"/>
 
@@ -102,6 +105,7 @@ Taken at the output coordinate system.
 
     </visual>
 	<collision>
+		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
 		<cylinder radius="0.04" length="0.41"/>
 	</collision>
 	<inertial>
@@ -150,7 +154,7 @@ Taken at the output coordinate system.
     0.06  diameter-->
 	   <visual>
         <geometry>
-		
+			<origin xyz="0.1 0.41 0.0" rpy="0.0 0.0 0.0"/>
 			<cylinder radius="0.03" length="0.21"/>
 			
 		
@@ -159,6 +163,7 @@ Taken at the output coordinate system.
 
     </visual>
 	<collision>
+		<origin xyz="0.1 0.41 0.0" rpy="0.0 0.0 0.0"/>
 		<cylinder radius="0.03" length="0.21"/>
 	</collision>
 	<inertial>
@@ -209,11 +214,13 @@ measurements:
 	
     <visual>
         <geometry>
+			<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/>
             <box size="0.33 0.1 0.06"/> <!-- all units are in meters-->
         </geometry>
     </visual>
     <collision>
         <geometry>
+		<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/>
 		<box size="0.33 0.1 0.06"/>
 		</geometry>
     </collision>
@@ -223,5 +230,59 @@ measurements:
 	</inertial>
 
 </link>
+
+<!-- these are all dummy and virtual links to allow for multiple degrees of freedom per joint-->
+<link name="virtual_base_to_shoulder"/>
+<link name="elbow_to_wrist_continuous"/>
+<link name="world"/>
+	
+<!-- the following are the joints for the arm, not that the origin and axes are all relative to the parent links so
+will need to do some trial and error to fix the joints and links once done-->
+<joint name="world_to_base" type="fixed">
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<parent link="world"/>
+	<child link="base"/>
+	
+</joint>
+
+<joint name="base_to_shoulder_rotatexy" type="revolute"> 
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<parent link="base"/>
+	<child link="shoulder"/>
+	<limit lower="0.0" upper="6.28" effort="10.0" velocity="10.0"/>
+	<axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="base_to_shoulder_rotatezx" type="revolute">
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<parent link="base"/>
+	<child link="shoulder"/>
+	<axis xyz="0.0 1.0 0.0"/>
+	<limit lower="0.5" upper="1.5707" effort="10.0" velocity="10.0"/>
+</joint>
+
+<joint name="shoulder_to_elbow" type="revolute">
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+	<parent link="shoulder"/>
+	<child link="elbow"/>
+	<axis xyz="0.0 1.0 0.0"/>
+	<limit lower="0.5" upper="1.5707" effort="10.0" velocity="10.0"/>
+</joint>
+
+<joint name="elbow_to_wrist_revolve" type="revolute">
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<parent link="elbow"/>
+	<child link="wrist"/>
+	<axis xyz="1.0 0.0 0.0"/>
+	<limit lower="-1.5707" upper="1.5707" effort="10.0" velocity="10.0"/>
+</joint>
+
+<joint name="elbow_to_wrist_cont" type="continuous">
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<parent link="elbow"/>
+	<child link="wrist"/>
+	<axis xyz="0.0 1.0 0.0"/>
+	<!--<limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>-->
+</joint>
     
 </robot>
