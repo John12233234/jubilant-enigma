@@ -56,46 +56,47 @@ Taken at the output coordinate system.
 	</inertial>
 </link>
 
-<link name="Shoulder">
-<!--Mass properties of Assem2^Rover-Arm-Full-Asm
+<link name="shoulder">
+	<!--Mass properties of Assem2^Rover-Arm-Full-Asm
      Configuration: Default
      Coordinate system: default
 
-* Includes the mass properties of one or more hidden components/bodies.
+	* Includes the mass properties of one or more hidden components/bodies.
 
-Mass = 2.333 kilograms
+	Mass = 2.333 kilograms
 
-Volume = 59.340 cubic inches
+	Volume = 59.340 cubic inches
 
-Surface area = 0.268 square meters
+	Surface area = 0.268 square meters
 
-Center of mass: ( meters )
+	Center of mass: ( meters )
 	X = 0.000
 	Y = 0.178
 	Z = -0.070
 
-Principal axes of inertia and principal moments of inertia: ( kilograms * square meters )
-Taken at the center of mass.
+	Principal axes of inertia and principal moments of inertia: ( kilograms * square meters )
+	Taken at the center of mass.
 	 Ix = ( 0.003, -0.308,  0.951)   	Px = 0.005
 	 Iy = ( 0.014, -0.951, -0.308)   	Py = 0.020
 	 Iz = ( 1.000,  0.014,  0.001)   	Pz = 0.024
 
-Moments of inertia: ( kilograms * square meters )
-Taken at the center of mass and aligned with the output coordinate system.
+	Moments of inertia: ( kilograms * square meters )
+	Taken at the center of mass and aligned with the output coordinate system.
 	Lxx = 0.024	Lxy = 0.000	Lxz = 0.000
 	Lyx = 0.000	Lyy = 0.018	Lyz = -0.004
 	Lzx = 0.000	Lzy = -0.004	Lzz = 0.006
 
-Moments of inertia: ( kilograms * square meters )
-Taken at the output coordinate system.
+	Moments of inertia: ( kilograms * square meters )
+	Taken at the output coordinate system.
 	Ixx = 0.109	Ixy = 0.000	Ixz = 0.000
 	Iyx = 0.000	Iyy = 0.030	Iyz = -0.034
 	Izx = 0.000	Izy = -0.034	Izz = 0.080
     measurements: .41m in length
     0.08m diameter -->
     <visual>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707" /> <!-- orgin is placed outside geometry but still inside the visual tag -->
         <geometry>
-		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/> <!-- make the shoulder stand up out of the base-->
+			<!-- <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/> <! make the shoulder stand up out of the base-->
 		
 			<cylinder radius="0.04" length="0.41"/>
 
@@ -104,9 +105,12 @@ Taken at the output coordinate system.
         </geometry>
 
     </visual>
+
 	<collision>
 		<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
-		<cylinder radius="0.04" length="0.41"/>
+		<geometry>
+			<cylinder radius="0.04" length="0.41"/>
+		</geometry>
 	</collision>
 	<inertial>
 		<mass value="2.333"/>
@@ -115,7 +119,7 @@ Taken at the output coordinate system.
     
 </link>
 
-<link name="Elbow">
+<link name="elbow">
     <!-- Mass properties of Assem4^Rover-Arm-Full-Asm
      Configuration: Default
      Coordinate system: default 
@@ -153,8 +157,9 @@ Taken at the output coordinate system.
     measurements: .21m in length
     0.06  diameter-->
 	   <visual>
+	   <origin xyz="0.1 0.41 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-			<origin xyz="0.1 0.41 0.0" rpy="0.0 0.0 0.0"/>
+		<!--	<origin xyz="0.1 0.41 0.0" rpy="0.0 0.0 0.0"/> -->
 			<cylinder radius="0.03" length="0.21"/>
 			
 		
@@ -164,7 +169,9 @@ Taken at the output coordinate system.
     </visual>
 	<collision>
 		<origin xyz="0.1 0.41 0.0" rpy="0.0 0.0 0.0"/>
-		<cylinder radius="0.03" length="0.21"/>
+		<geometry>
+			<cylinder radius="0.03" length="0.21"/>
+		</geometry>
 	</collision>
 	<inertial>
 		<mass value="0.602"/>
@@ -172,7 +179,7 @@ Taken at the output coordinate system.
 	</inertial>
 </link>
 
-<link name="Wrist">
+<link name="wrist">
 <!-- Mass properties of Spherical Wrist 1
      Configuration: Default
      Coordinate system: default 
@@ -213,15 +220,17 @@ measurements:
 
 	
     <visual>
+	<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-			<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/>
+		<!--	<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/> -->
             <box size="0.33 0.1 0.06"/> <!-- all units are in meters-->
         </geometry>
     </visual>
     <collision>
+	<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/>
         <geometry>
-		<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/>
-		<box size="0.33 0.1 0.06"/>
+		<!--	<origin xyz="0.21 0.41 0.0" rpy="0.0 0.0 0.0"/> -->
+			<box size="0.33 0.1 0.06"/>
 		</geometry>
     </collision>
 	<inertial>
@@ -232,8 +241,19 @@ measurements:
 </link>
 
 <!-- these are all dummy and virtual links to allow for multiple degrees of freedom per joint-->
-<link name="virtual_base_to_shoulder"/>
-<link name="elbow_to_wrist_continuous"/>
+<link name="virtual_base_to_shoulder">
+<inertial>
+      <mass value="0.025" />
+      <inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+    </inertial>
+</link>
+
+<link name="elbow_to_wrist_continuous">
+	<inertial>
+      	<mass value="0.025" />
+      	<inertia ixx="5.8083e-4" ixy="0" ixz="0" iyy="3.0833e-5" iyz="0" izz="5.9083e-4" />
+	</inertial>
+</link>
 <link name="world"/>
 	
 <!-- the following are the joints for the arm, not that the origin and axes are all relative to the parent links so
