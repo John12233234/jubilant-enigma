@@ -266,6 +266,7 @@ will need to do some trial and error to fix the joints and links once done-->
 </joint>
 
 <joint name="base_to_shoulder_rotatexy" type="revolute"> 
+	
 	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	<parent link="base"/>
 	<child link="shoulder"/>
@@ -274,6 +275,7 @@ will need to do some trial and error to fix the joints and links once done-->
 </joint>
 
 <joint name="base_to_shoulder_rotatezx" type="revolute">
+	<mimic joint="base_to_shoulder_rotatexy"/>
 	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	<parent link="base"/>
 	<child link="shoulder"/>
@@ -298,6 +300,7 @@ will need to do some trial and error to fix the joints and links once done-->
 </joint>
 
 <joint name="elbow_to_wrist_cont" type="continuous">
+	<mimic joint="elbow_to_wrist_revolve"/>
 	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
 	<parent link="elbow"/>
 	<child link="wrist"/>
